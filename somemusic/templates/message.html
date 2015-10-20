@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : RedMarket 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20140101
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<!--link href="default.css" rel="stylesheet" type="text/css" media="all" /-->
+<link href="{{url_for('static',filename='default.css')}}" rel='stylesheet' type='text/css' media='all'>
+<!--link href="fonts.css" rel="stylesheet" type="text/css" media="all" /-->
+<link href="{{url_for('static',filename='fonts.css')}}" rel='stylesheet' type='text/css' media='all'>
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div id="header-wrapper" style="background:url({{url_for('static',filename='images/banner.jpg')}}) no-repeat center">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">SomeMu</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="/" accesskey="1" title="">Homepage</a></li>
+				<li><a href="/#staff" accesskey="2" title="">Category</a></li>
+				<li class="active"><a href="#" accesskey="3" title="">Leave A Message</a></li>
+				<li><a href="#contact" accesskey="4" title="">Contact Me</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="banner" class="container"><span>Welcome! I am Log<br />
+		你好，和我一块打滚玩好吗？</span></div>
+</div>
+<div id="wrapper">
+	<div id="staff" class="container">
+		<div class="title">
+			<h2>Would you like some music?</h2>
+			<span>This website offers some popular music and violin music. If these can not meet your taste, you can send an e-mail to me to update.</span> </div>
+		  <div class=messagebox>
+        <form method='POST'>
+          {{form.hidden_tag()}}
+          <p style='color:red'>{{form.message.label()}}<br/>
+          The message will be sent to my mail-box</p>
+          {{form.message()}}
+          {{form.submit()}}
+        </form>
+        <p style='color:red'>{{result}}</p>
+          
+      </div>
+	</div>
+  
+	<div id="page" class="container">
+		<div class="boxA">
+
+		</div>
+		<div class="boxC">
+
+		</div>
+	</div>
+	<div id="welcome" class="container">
+		<div class="title">
+			<h2><a name='contact' style='color:black'>Welcome to my website</a></h2>
+		</div>
+		<p>Hello，我是龚立雪。这里是<strong>SomeMu</strong>，这是我的课程作业，我制作的一个音乐资源网站，其中CSS模板来自<a href="http://templated.co" rel="nofollow">TEMPLATED</a>。在这里我分享了一些流行音乐和小提琴曲目，每首曲子的页面都有简短介绍。Have fun :) </p>
+    <p>联系我：<br>
+      E-mail: <a href="mailto:724351282@qq.com?subject=Hello%20again">724351282@qq.com</a>
+    </p>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+</div>
+</body>
+</html>

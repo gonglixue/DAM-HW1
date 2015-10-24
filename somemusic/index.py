@@ -7,6 +7,10 @@ from email.mime.text import MIMEText
 from flask.ext.wtf import Form
 from wtforms import StringField, SubmitField
 from wtforms.validators import Required
+import sys
+import urllib
+import urllib.request
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 manager = Manager(app)
@@ -28,7 +32,30 @@ def temp(id):
 		fp=open(os.getcwd()+'/static/popular/'+'0%s'%id+'.txt')
 	description = fp.readlines()  
 	fp.close()
-	return render_template('popsong2.html',num=id,title=description[0],detail=description[1])
+	# separate the singer from first line
+	str = description[0]
+	tuple = str.partition('|')
+	singer_name = tuple[2]	
+	
+	# use singer_name as the key word to search in baidu
+	url = "http://music.baidu.com/search?key=" + urllib.parse.quote(singer_name)
+	page = urllib.request.urlopen(url).read()
+	soup = BeautifulSoup(page)
+	name = list(range(5))
+	link = list(range(5))
+	image = list(range(5))
+	i=0
+	for item in soup.find_all(class_="group-item"):
+		img_src = item.img
+		info = item.find(class_ = 'cover')
+		image[i] = img_src['src']
+		name[i] = img_src['alt']
+		link[i] = "http://music.baidu.com" + info['href']
+		i=i+1
+		if(i==5):
+			break
+		
+	return render_template('popsong2.html',num=id,title=description[0],detail=description[1],name=name,link=link,image=image)
 	
 @app.route('/popular/')
 def popular():

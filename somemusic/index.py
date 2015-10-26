@@ -81,7 +81,7 @@ def violinsong(id):
 
 mail_host = "smtp.sina.com"
 mail_user = "XXX@sina.com"  # e-mail address
-mail_pass = ""	#  password _(:з」∠)_ 
+mail_pass = os.environ.get('MAIL_PASSWORD')	#you should set the environment variable first
 @app.route('/message/',methods=['GET','POST'])
 def send():
 	form = MessageForm()

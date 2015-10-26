@@ -70,8 +70,20 @@ Released   : 20140101
     </div>
 		<!--div class="boxC"><img src="{{url_for('static',filename='images/pic02.jpg')}}" width="300" height="450" alt="" /></div-->
 	</div>
-	<div id="page" class="container">
-    
+	<div id="page" class="container album-hr">
+     <span id="left-span"><small>百度音乐相关专辑推荐：</small></span>
+     <ul class="group-list">    
+     {% for i in range(0,5): %}
+     <li class="group-item"  align="center">       
+        <a target='_blank' href={{link[i]}} style="color:black">
+          <img src={{image[i]}} width='110px' height='110px'>
+          <small>{{name[i]}}</small>
+        </a>  
+     </li>     
+     {% endfor %}
+     
+     </ul>
+        
 	</div>
 	<div id="welcome" class="container">
 		<div class="title">
